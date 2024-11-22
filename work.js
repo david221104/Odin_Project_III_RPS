@@ -69,3 +69,21 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
+
+function playGame() {
+
+    console.log("Hello, you are playing Rock, Paper, Scissors, whihc lasts for 5 rounds.");
+
+    for(let i = 1; i <= 5; i++) {
+        console.log(`Round ${i}:`);
+        playRound(getHumanChoice(), getComputerChoice());
+        console.log(`Current score is: \n`);
+        console.log(`Player: ${humanScore}         Computer: ${computerScore}`);
+    }   
+        
+    console.log("Thank you for playing. Your final results are: ");
+    console.log(`Player: ${humanScore}         Computer: ${computerScore}`);
+}
+
+
+playGame();
