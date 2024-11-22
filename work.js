@@ -2,26 +2,70 @@
 function getComputerChoice() {
     // gets a random number
     let number = Math.floor(Math.random() * 3); 
-    console.log(number);
     // decides rock, paper or scissors based on the given number
     switch(number) {
-        case 0 : console.log("Rock!")                    
+        case 0 : number = "Rock";                    
                     break;
-        case 1 : console.log("Paper!");
+        case 1 : number = "Paper";
                     break;
-        case 2 : console.log("Scissors!");
+        case 2 : number = "Scissors";
                     break;
         default : break;
     }
+
+    return number;
 }
 
-getComputerChoice();
 
 // prompts for player input 
 function getHumanChoice() {
-    let choice = prompt("Rock, paper or scissor ?");
-    console.log(choice);
+    let choice = prompt("Rock, paper or scissors?");
+    return choice;
 }
 
-getHumanChoice();
+let humanScore = 0, computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    // puts the values at uppercase to avoid case sensitiviy 
+    humanChoice = humanChoice.toUpperCase();
+    computerChoice = computerChoice.toUpperCase();
+    console.log(humanChoice, computerChoice);
+    
+
+
+
+    // game mechanism
+    if(humanChoice == computerChoice) {
+        console.log("Draw!");
+    }
+    else if(humanChoice == "ROCK" && computerChoice == "PAPER") {
+        console.log("Computer wins!");
+        humanScore += 0; computerScore += 1;
+    }
+    else if(humanChoice == "PAPER" && computerChoice == "ROCK") {
+        console.log("Player wins!");
+        humanScore += 1; computerScore += 0;
+    }
+    else if(humanChoice == "SCISSORS" && computerChoice == "ROCK") {
+        console.log("Computer wins!");
+        humanScore += 0; computerScore += 1;
+    }
+    else if(humanChoice == "ROCK" && computerChoice == "SCISSORS") {
+        console.log("Player wins!");
+        humanScore += 1; computerScore += 0;
+    }
+    else if(humanChoice == "PAPER" && computerChoice == "SCISSORS") {
+        console.log("Computer wins!");
+        humanScore += 0; computerScore += 1;
+    }
+    else if(humanChoice == "SCISSORS" && computerChoice == "PAPER") {
+        console.log("Player wins!");
+        humanScore += 1; computerScore += 0;
+    }
+    else {
+        console.log("Invalid player input");
+    }
+
+
+}
 
