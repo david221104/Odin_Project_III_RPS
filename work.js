@@ -1,3 +1,4 @@
+const game = document.querySelector("#lol");
 // random number function
 function getComputerChoice() {
     // gets a random number
@@ -18,72 +19,70 @@ function getComputerChoice() {
 
 
 // prompts for player input 
-function getHumanChoice() {
-    let choice = prompt("Rock, paper or scissors?");
-    return choice;
-}
 
 let humanScore = 0, computerScore = 0;
 
-function playRound(humanChoice, computerChoice) {
-    // puts the values at uppercase to avoid case sensitiviy 
-    humanChoice = humanChoice.toUpperCase();
-    computerChoice = computerChoice.toUpperCase();
-    console.log(humanChoice, computerChoice);
-    
-
-
-
-    // game mechanism
-    if(humanChoice == computerChoice) {
-        console.log("Draw!");
+function playRound(computerChoice, playerChoice){
+    const result = document.createElement("div");
+    result.setAttribute("style", "display: flex; flex-direction: column;") 
+    result.textContent = "";
+    if(playerChoice == computerChoice) {
+        result.textContent = "Draw!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "ROCK" && computerChoice == "PAPER") {
-        console.log("Computer wins!");
-        humanScore += 0; computerScore += 1;
+    else if(playerChoice == "Rock" && computerChoice == "Paper") {
+        result.textContent = "Computer wins!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "PAPER" && computerChoice == "ROCK") {
-        console.log("Player wins!");
-        humanScore += 1; computerScore += 0;
+    else if(playerChoice == "Paper" && computerChoice == "Rock") {
+        result.textContent = "Player wins!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "SCISSORS" && computerChoice == "ROCK") {
-        console.log("Computer wins!");
-        humanScore += 0; computerScore += 1;
+    else if(playerChoice == "Scissors" && computerChoice == "Rock") {
+        result.textContent = "Computer wins!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "ROCK" && computerChoice == "SCISSORS") {
-        console.log("Player wins!");
-        humanScore += 1; computerScore += 0;
+    else if(playerChoice == "Rock" && computerChoice == "Scissors") {
+        result.textContent = "Player wins!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "PAPER" && computerChoice == "SCISSORS") {
-        console.log("Computer wins!");
-        humanScore += 0; computerScore += 1;
+    else if(playerChoice == "Paper" && computerChoice == "Scissors") {
+        result.textContent = "Computer wins!";
+        game.appendChild(result);
     }
-    else if(humanChoice == "SCISSORS" && computerChoice == "PAPER") {
-        console.log("Player wins!");
-        humanScore += 1; computerScore += 0;
+    else if(playerChoice == "Scissors" && computerChoice == "Paper") {
+        result.textContent = "Player wins!";
+        game.appendChild(result);
     }
     else {
         console.log("Invalid player input");
     }
-
-
 }
 
+let playerSelection;
 
-function playGame() {
-
-    console.log("Hello, you are playing Rock, Paper, Scissors, whihc lasts for 5 rounds.");
-
-    for(let i = 1; i <= 5; i++) {
-        console.log(`Round ${i}:`);
-        playRound(getHumanChoice(), getComputerChoice());
-        console.log(`Current score is: \n`);
-        console.log(`Player: ${humanScore}         Computer: ${computerScore}`);
-    }   
-        
-    console.log("Thank you for playing. Your final results are: ");
-    console.log(`Player: ${humanScore}         Computer: ${computerScore}`);
-}
+const rock = document.createElement("button");
+rock.classList.add("rock");
+rock.setAttribute("style", "background: url('rock.png') no-repeat center / contain; border: none; padding; 0; height: 200px; width: 200px");
+rock.addEventListener("click", () => {
+    playRound(getComputerChoice(), playerSelection = "Rock")
+});
 
 
-playGame();
+const paper = document.createElement("button");
+paper.classList.add("paper");
+paper.setAttribute("style", "background: url('paper.jpeg') no-repeat center / contain; border: none; padding; 0; height: 200px; width: 200px");
+paper.addEventListener("click", () => {
+    playRound(getComputerChoice(), playerSelection = "Paper")
+});
+
+const scissors = document.createElement("button");
+scissors.classList.add("scissors");
+scissors.setAttribute("style", "background: url('scissors.png') no-repeat center / contain; border: none; padding; 0; height: 200px; width: 200px");
+scissors.addEventListener("click", () => {
+    playRound(getComputerChoice(), playerSelection = "Scissors")
+});
+
+game.appendChild(rock);
+game.appendChild(paper);
+game.appendChild(scissors);

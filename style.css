@@ -1,0 +1,26 @@
+body {
+    height: 200hv;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    border: solid, black, 7px;
+    margin: 30px;
+    padding: 20px;
+    font-size: 40px;
+    background-color: yellowgreen;
+}
+
+#lol {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 230px;
+}
+
